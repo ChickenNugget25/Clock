@@ -1,11 +1,5 @@
-import subprocess
-import sys
+import pygame
 
-try:
-    import pygame
-except:
-    subprocess.call([sys.executable,'-m pip install pygame'])
-    import pygame
 import datetime as dt
 
 with open('Data/reds.txt','r+') as f:
@@ -16,7 +10,7 @@ reds = []
 for i in lines:
     reds.append([i.split(' ')[0],i.split(' ')[1]])
 
-reds = [['1132','1200'],['1207','1230'],['1237','1250']]
+#reds = [['1132','1200'],['1207','1230'],['1237','1250']]
 time = dt.datetime.now()
 
 pygame.init()
@@ -43,9 +37,7 @@ def checkMinute():
     for i in range(len(reds)):
         for x in range(2):
             #if the red < current time
-            print(((int(reds[i][x][:-2])*60)+int(reds[i][x][-2:])),(((12 if time.hour==0 else time.hour)*60)+time.minute))
             if(((int(reds[i][x][:-2])*60)+int(reds[i][x][-2:]))<(((12 if time.hour==0 else time.hour)*60)+time.minute)+1):
-                print(x,i,len(reds)-1)
                 currentRed=i
                 if(x==1 and i!=len(reds)-1):
                     currentColor=(0,255,0)
@@ -63,7 +55,6 @@ def updateTimer():
     if(currentColor==(225,225,225)):
         return "n:nn"
     else:
-        print(currentInterval)
         t1 = dt.datetime.strptime(str(12 if time.hour == 0 else time.hour) + ':' + str(time.minute) + ':' + str(time.second),"%H:%M:%S")
         t2 = dt.datetime.strptime(currentInterval.split(' - ')[1]+':00', "%H:%M:%S")
         d=t2-t1
