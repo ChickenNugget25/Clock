@@ -2,7 +2,7 @@
 
 I have a class where the teacher splits up work and free time, so I made a python app to automate it. 
 
-Green means free time, red means work time
+Green means free time, red means work time, white means the class hasn't started yet.
 
 The times can be changed by changing the contents of the "reds.txt" file, in the following order:
 
@@ -11,4 +11,3 @@ The times can be changed by changing the contents of the "reds.txt" file, in the
 Example:
 
 1135 1200
-1207 1235
