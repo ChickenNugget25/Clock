@@ -16,7 +16,7 @@ reds = []
 for i in lines:
     reds.append([i.split(' ')[0],i.split(' ')[1]])
 
-reds = [['1132','1200'],['1207','1230'],['1237','1250']]
+#reds = [['1132','1200'],['1207','1230'],['1237','1250']]
 time = dt.datetime.now()
 
 pygame.init()
