@@ -5,6 +5,7 @@ try:
     import pygame
 except:
     subprocess.call([sys.executable,'-m pip install pygame'])
+    import pygame
 import datetime as dt
 
 with open('Data/reds.txt','r+') as f:
@@ -81,10 +82,10 @@ def fix(currentColor):
         currentInterval="will show tmr"
     else:
         currentInterval = reds[0][0][:-2] + ':' + reds[0][0][-2:]
-    return currentInterval
+    return currentInterval, currentColor
 
 currentColor,currentRed=checkMinute()
-currentInterval = fix(currentColor)
+currentInterval,currentColor = fix(currentColor)
 currentTime=updateTimer()
 
 while running:
@@ -94,7 +95,7 @@ while running:
     if(time.minute != dt.datetime.now().minute):
         time=dt.datetime.now()
         currentColor,currentRed=checkMinute()
-        currentInterval=fix(currentColor)
+        currentInterval,currentColor=fix(currentColor)
         time=dt.datetime.now()
         currentTime=updateTimer() 
     elif(time.second != dt.datetime.now().second):
