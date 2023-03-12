@@ -4,6 +4,7 @@ import datetime as dt
 
 with open('Data/reds.txt','r+') as f:
     lines=f.readlines()
+    lines= [lines[i][:-1] for i in range(len(lines)-1)]
 
 reds = []
 
@@ -42,6 +43,7 @@ def checkMinute():
                 if(x==1 and i!=len(reds)-1):
                     currentColor=(0,255,0)
                 elif(x==1):
+                    
                     currentColor=(1,1,1)
                 else:
                     currentColor=(255,0,0)
