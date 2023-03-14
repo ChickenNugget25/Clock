@@ -8,6 +8,9 @@ The times can be changed by changing the contents of the "reds.txt" file, in the
 
 {work time start} {work time end}, making sure each interval is on it's own line.
 
+Also, you have to use military time,
+so 1:00 should be inputted as 1300.
+
 Example:
 
 1135 1200

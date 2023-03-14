@@ -43,7 +43,6 @@ def checkMinute():
                 if(x==1 and i!=len(reds)-1):
                     currentColor=(0,255,0)
                 elif(x==1):
-                    
                     currentColor=(1,1,1)
                 else:
                     currentColor=(255,0,0)
@@ -67,14 +66,34 @@ def updateTimer():
 
 def fix(currentColor):
     if(currentColor==(0,255,0)):
-        currentInterval=reds[currentRed][1][:-2] + ':' + reds[currentRed][1][-2:] + ' - ' + reds[currentRed+1][0][:-2] + ':' + reds[currentRed+1][0][-2:]
+        if(int(reds[currentRed][1][:-2]) > 12):
+            c = str(int(reds[currentRed][1][:-2])-12)
+        else:
+            c = reds[currentRed][1][:-2]
+        if(int(reds[currentRed+1][0][:-2])>12):
+            c1 = str(int(reds[currentRed+1][0][:-2])-12)
+        else:
+            c1 = reds[currentRed+1][0][:-2]
+        currentInterval=c + ':' + reds[currentRed][1][-2:] + ' - ' + c1 + ':' + reds[currentRed+1][0][-2:]
     elif(currentColor==(255,0,0)):
-        currentInterval=reds[currentRed][0][:-2] + ':' + reds[currentRed][0][-2:] + ' - ' + reds[currentRed][1][:-2] + ':' + reds[currentRed][1][-2:]
+        if(int(reds[currentRed][0][:-2]) > 12):
+            c = str(int(reds[currentRed][0][:-2])-12)
+        else:
+            c = reds[currentRed][0][:-2]
+        if(int(reds[currentRed][1][:-2])>12):
+            c1 = str(int(reds[currentRed][1][:-2])-12)
+        else:
+            c1 = reds[currentRed][1][:-2]
+        currentInterval=c + ':' + reds[currentRed][0][-2:] + ' - ' + c1 + ':' + reds[currentRed][1][-2:]
     elif(currentColor==(1,1,1)):
         currentColor=(225,225,225)
         currentInterval="will show tmr"
     else:
-        currentInterval = reds[0][0][:-2] + ':' + reds[0][0][-2:]
+        if(int(reds[0][0][:-2])>12):
+            c = str(int(reds[0][0][:-2])-12)
+        else:
+            c = reds[0][0][:-2]
+        currentInterval = c + ':' + reds[0][0][-2:]
     return currentInterval, currentColor
 
 currentColor,currentRed=checkMinute()
